@@ -29,10 +29,11 @@ flowchart LR
 - Historial de consumos y anulaciones.
 - Validación de saldo suficiente y guardado transaccional.
 - Tablas y ventanas que se adaptan al tamaño de pantalla.
+- Solicitudes en borrador con calendarios, vista previa de días y registro de cambios, sin reservar ni descontar saldo.
 
 ## En desarrollo
 - Nuevos períodos por aniversario.
-- Solicitudes con calendario y reincorporación.
+- Aprobación de solicitudes y calendario operativo de vacaciones.
 - Documento de vacaciones en PDF, vinculado al historial.
 - Asignación de permisos a todos los empleados o por área.
 
@@ -60,6 +61,24 @@ El flujo previsto será:
 Se conservarán las versiones emitidas y los datos utilizados en cada documento. Las anulaciones deberán devolver los días correspondientes sin borrar el historial.
 
 Esta descripción presenta el alcance del desarrollo. No publica el formato interno de Recursos Humanos ni documentos de trabajadores. La plantilla definitiva y su contenido todavía deben validarse antes de implementar la generación.
+
+## Calendario y seguimiento previstos
+
+La aprobación de una solicitud se distinguirá de la situación del empleado en la fecha consultada:
+
+| Etiqueta del calendario | Color propuesto | Significado |
+|---|---|---|
+| En vacaciones | Azul | Solicitud aprobada dentro de su período de vacaciones. |
+| Vacaciones programadas | Violeta | Solicitud aprobada cuya salida todavía no llega. |
+| Vacaciones finalizadas | Gris | Período aprobado cuyo último día ya pasó. |
+| Pendiente de aprobación | Ámbar | Solicitud que todavía no confirma una ausencia. |
+| Sin vacaciones aprobadas | Sin relleno | No hay vacaciones aprobadas registradas para esa fecha. |
+
+La vista incluirá leyenda y etiquetas, filtros por área y empleado, y el detalle de quién reemplaza a quién. La disponibilidad laboral necesita considerar también jornada y otras ausencias.
+
+Se prevé adjuntar el documento firmado a la solicitud, conservándolo por separado del PDF generado. La regla que vincula firma y aprobación deberá acordarse con Recursos Humanos.
+
+La eliminación tendrá confirmación Sí o No. Si una solicitud ya descontó días, su eliminación deberá revertirlos y conservar trazabilidad interna, sin un estado Cancelada en el listado operativo. Estas funciones de aprobación, calendario, reemplazos y firma todavía están pendientes de implementación.
 
 ## Tecnología
 Python, PyQt6 y SQLite.
