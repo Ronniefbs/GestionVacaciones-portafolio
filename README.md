@@ -30,10 +30,11 @@ flowchart LR
 - Validación de saldo suficiente y guardado transaccional.
 - Tablas y ventanas que se adaptan al tamaño de pantalla.
 - Solicitudes en borrador con calendarios, vista previa de días y registro de cambios, sin reservar ni descontar saldo.
+- Calendario independiente con navegación por mes y año, vista del mes anterior, filtros y detalle por fecha.
 
 ## En desarrollo
 - Nuevos períodos por aniversario.
-- Aprobación de solicitudes y calendario operativo de vacaciones.
+- Aprobación de solicitudes y asignación de reemplazos.
 - Documento de vacaciones en PDF, vinculado al historial.
 - Asignación de permisos a todos los empleados o por área.
 
@@ -62,9 +63,11 @@ Se conservarán las versiones emitidas y los datos utilizados en cada documento.
 
 Esta descripción presenta el alcance del desarrollo. No publica el formato interno de Recursos Humanos ni documentos de trabajadores. La plantilla definitiva y su contenido todavía deben validarse antes de implementar la generación.
 
-## Calendario y seguimiento previstos
+## Calendario y seguimiento
 
-La aprobación de una solicitud se distinguirá de la situación del empleado en la fecha consultada:
+La vista del calendario ya está implementada en una ventana independiente. Incluye navegación por mes y año, selector de meses, botón Hoy, rueda y teclado, miniatura del mes anterior y detalle de la fecha seleccionada.
+
+Actualmente muestra las solicitudes en borrador sin tratarlas como vacaciones aprobadas. La aprobación sigue pendiente. La clasificación por fechas está preparada para estos estados:
 
 | Etiqueta del calendario | Color propuesto | Significado |
 |---|---|---|
@@ -74,11 +77,11 @@ La aprobación de una solicitud se distinguirá de la situación del empleado en
 | Pendiente de aprobación | Ámbar | Solicitud que todavía no confirma una ausencia. |
 | Sin vacaciones aprobadas | Sin relleno | No hay vacaciones aprobadas registradas para esa fecha. |
 
-La vista incluirá leyenda y etiquetas, filtros por área y empleado, y el detalle de quién reemplaza a quién. La disponibilidad laboral necesita considerar también jornada y otras ausencias.
+La vista incluye leyenda y etiquetas y filtros por área y empleado. La asignación y consulta de quién reemplaza a quién está pendiente. La disponibilidad laboral necesita considerar también jornada y otras ausencias.
 
 Se prevé adjuntar el documento firmado a la solicitud, conservándolo por separado del PDF generado. La regla que vincula firma y aprobación deberá acordarse con Recursos Humanos.
 
-La eliminación tendrá confirmación Sí o No. Si una solicitud ya descontó días, su eliminación deberá revertirlos y conservar trazabilidad interna, sin un estado Cancelada en el listado operativo. Estas funciones de aprobación, calendario, reemplazos y firma todavía están pendientes de implementación.
+La eliminación tendrá confirmación Sí o No. Si una solicitud ya descontó días, su eliminación deberá revertirlos y conservar trazabilidad interna, sin un estado Cancelada en el listado operativo. Las funciones de aprobación, reemplazos y firma todavía están pendientes de implementación; la consulta del calendario ya está disponible.
 
 ## Tecnología
 Python, PyQt6 y SQLite.
