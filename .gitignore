@@ -1,0 +1,7 @@
+*.db
+*.sqlite*
+.env*
+*.xlsx
+*.csv
+*.pdf
+__pycache__/
